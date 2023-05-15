@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import YoutubeEmbed from "../services/youtube.js"
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
-
+import ApiRouterConstants from "../constants/api.router.constants.js"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     ToastSuccess("WELCOME TO HOME PAGE!")
     const fetchData = async () =>{
-      await axios.get('http://localhost:3000/videos', {
+      await axios.get(ApiRouterConstants.VIDEO_API, {
           params: { access_token: localStorage.getItem('access_token') },
           headers: { Accept: "application/json" },
       }).then((response) => {
@@ -54,7 +54,6 @@ const Home = () => {
   }
 
   const getIdFromUrl = (url) => {
-    console.log('rul', url)
     const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     const match = url.match(regExp);
     return (match&&match[7].length === 11)? match[7] : false;
@@ -68,7 +67,6 @@ const Home = () => {
       maxWidth="lg"
       sx={{
         display: "flex",
-        flexDirection: "row",
         alignItems: "center",
         flexDirection: "column",
         height: "100vh",

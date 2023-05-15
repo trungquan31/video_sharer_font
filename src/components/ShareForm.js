@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { Form, FormikProvider, useFormik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
@@ -13,6 +12,7 @@ import {
   ToastSuccess,
   ToastError
 }  from "../services/toast.js"
+import ApiRouterConstants from "../constants/api.router.constants.js"
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -41,7 +41,7 @@ const ShareForm = ( ) => {
     onSubmit: async (values) => {
       try{
         console.log("sharing...");
-        await axios.post('http://localhost:3000/videos',
+        await axios.post(ApiRouterConstants.VIDEO_API,
           { 
             url: values.url,
             access_token: localStorage.getItem('access_token')

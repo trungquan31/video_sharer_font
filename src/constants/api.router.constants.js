@@ -1,4 +1,4 @@
-import RouterConstants from "./app.constants";
+import RouterConstants from "./app.constants.js";
 
 export default class ApiRouterConstants {
   // API routers path

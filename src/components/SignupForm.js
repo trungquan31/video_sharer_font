@@ -13,6 +13,7 @@ import { LoadingButton } from "@mui/lab";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import axios from 'axios';
+import ApiRouterConstants from "../constants/api.router.constants.js"
 
 /////////////////////////////////////////////////////////////
 let easing = [0.6, -0.05, 0.01, 0.99];
@@ -52,7 +53,7 @@ const SignupForm = ({ setAuth }) => {
     onSubmit: async (values) => {
       try{
         console.log("submitting...");
-        const res = await axios.post('http://localhost:3000/users',
+        await axios.post(ApiRouterConstants.SIGN_UP_API,
           { 
             email: values.email,
             password: values.password,
