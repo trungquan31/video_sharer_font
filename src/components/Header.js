@@ -2,8 +2,7 @@ import React from 'react'
 import Logout from "../components/Logout.js"
 import { Box } from "@mui/material";
 
-
-function Header({setAuth}){
+function Header(){
   return(
     <header className="home-header">
       <Box sx={{ 
@@ -12,7 +11,7 @@ function Header({setAuth}){
         gap: 3 
       }}>
         <h4 >Welcome {localStorage.getItem('email')}</h4>
-        <Logout element={setAuth}/>
+        <Logout/>
       </Box>
     </header>
   )

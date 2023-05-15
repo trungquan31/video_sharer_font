@@ -2,10 +2,6 @@
   "name": "video_sharer_font",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.x",
-    "npm": "8.1.0"
-  },
   "dependencies": {
     "@iconify/react": "^4.1.0",
     "@mui/icons-material": "^5.11.16",
@@ -27,7 +23,7 @@
     "yup": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

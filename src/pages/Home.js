@@ -11,8 +11,7 @@ import YoutubeEmbed from "../services/youtube.js"
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 import ApiRouterConstants from "../constants/api.router.constants.js"
-import Broadcast from "../components/Broadcast.js"
-import { ActionCableProvider } from 'react-actioncable-provider';
+import React from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -29,7 +28,6 @@ const Home = () => {
           headers: { Accept: "application/json" },
       }).then((response) => {
         setTimeout(() => {
-          console.log('call api success')
           if (response.data[0] !== '') {
             setUrls(response.data)
           } else {
@@ -62,9 +60,8 @@ const Home = () => {
   }
 
   return (
-    <ActionCableProvider>
-      <ToastContainer/>
-      
+    <>
+    <ToastContainer/>
       <Container
         maxWidth="lg"
         sx={{
@@ -74,7 +71,6 @@ const Home = () => {
           height: "100vh",
         }}
       > 
-        <Broadcast/>
         <Header />
         <Box sx={{ 
           '& > :not(style)': { m: 1 },
@@ -90,7 +86,7 @@ const Home = () => {
           <GridVideo urls = {urls} />
         </Grid>
       </Container>
-    </ActionCableProvider>
+    </>
   );
 };
 

@@ -10,8 +10,9 @@ import {
   TextField,
 } from "@mui/material";
 import {
-  ToastError
+  ToastError,
 }  from "../services/toast.js"
+import { ToastContainer } from 'react-toastify';
 import { LoadingButton } from "@mui/lab";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
@@ -28,7 +29,7 @@ const animate = {
   },
 };
 
-const LoginForm = ({ setAuth} ) => {
+const LoginForm = ( { setAuth } ) => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -44,7 +45,7 @@ const LoginForm = ({ setAuth} ) => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      email: localStorage.getItem('email')||"",
       password: "",
     },
     validationSchema: LoginSchema,
@@ -70,7 +71,6 @@ const LoginForm = ({ setAuth} ) => {
       } catch(error) {
         console.log('exios error', error)
         ToastError(error.response.data.errors)
-        
       }
     },
   });
@@ -79,7 +79,9 @@ const LoginForm = ({ setAuth} ) => {
     formik;
 
   return (
-    <FormikProvider value={formik}>
+    <>
+      <ToastContainer/>
+      <FormikProvider value={formik}>
     <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
       <Box
         component={motion.div}
@@ -156,6 +158,7 @@ const LoginForm = ({ setAuth} ) => {
       </Box>
     </Form>
     </FormikProvider>
+  </>
   );
 };
 
