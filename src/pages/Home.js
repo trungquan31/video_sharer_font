@@ -11,6 +11,8 @@ import YoutubeEmbed from "../services/youtube.js"
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 import ApiRouterConstants from "../constants/api.router.constants.js"
+import Broadcast from "../components/Broadcast.js"
+import { ActionCableProvider } from 'react-actioncable-provider';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -60,34 +62,35 @@ const Home = () => {
   }
 
   return (
-    <>
-    <ToastContainer/>
-    
-    <Container
-      maxWidth="lg"
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    > 
-      <Header />
-      <Box sx={{ 
-        '& > :not(style)': { m: 1 },
-        float: 'left' 
-      }}>
-        <Button variant="contained" endIcon={<ShareIcon />}  onClick={() => {
-          navigate("/users/share")
+    <ActionCableProvider>
+      <ToastContainer/>
+      
+      <Container
+        maxWidth="lg"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100vh",
+        }}
+      > 
+        <Broadcast/>
+        <Header />
+        <Box sx={{ 
+          '& > :not(style)': { m: 1 },
+          float: 'left' 
         }}>
-          SHARE VIDEO
-        </Button>
-      </Box>
-      <Grid container spacing={2} columns={16}>
-        <GridVideo urls = {urls} />
-      </Grid>
-    </Container>
-    </>
+          <Button variant="contained" endIcon={<ShareIcon />}  onClick={() => {
+            navigate("/users/share")
+          }}>
+            SHARE VIDEO
+          </Button>
+        </Box>
+        <Grid container spacing={2} columns={16}>
+          <GridVideo urls = {urls} />
+        </Grid>
+      </Container>
+    </ActionCableProvider>
   );
 };
 
