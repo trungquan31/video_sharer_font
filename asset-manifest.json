@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/video_sharer_font/static/css/main.98ec47ca.css",
+    "main.js": "/video_sharer_font/static/js/main.773cd21d.js",
+    "index.html": "/video_sharer_font/index.html",
+    "main.98ec47ca.css.map": "/video_sharer_font/static/css/main.98ec47ca.css.map",
+    "main.773cd21d.js.map": "/video_sharer_font/static/js/main.773cd21d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98ec47ca.css",
+    "static/js/main.773cd21d.js"
+  ]
+}
