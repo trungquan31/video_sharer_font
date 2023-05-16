@@ -2,6 +2,7 @@
   "name": "video_sharer_font",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://spiffy-queijadas-e4c14a.netlify.app",
   "dependencies": {
     "@iconify/react": "^4.1.0",
     "@mui/icons-material": "^5.11.16",

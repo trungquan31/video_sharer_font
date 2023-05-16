@@ -4,13 +4,14 @@ import { Container, Typography, Link, Box, Divider } from "@mui/material";
 import styled from "@emotion/styled";
 import LoginForm from "../components/LoginForm";
 import { motion } from "framer-motion";
+import img from "../background.png"
 
-//////////////////////////////////
 const RootStyle = styled("div")({
   background: "rgb(249, 250, 251)",
   height: "100vh",
   display: "grid",
   placeItems: "center",
+  backgroundImage: `url(${img})`
 });
 
 const HeadingStyle = styled(Box)({
