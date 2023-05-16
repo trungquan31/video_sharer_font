@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 import ApiRouterConstants from "../constants/api.router.constants.js"
 import React from 'react';
+import img from "../BG-Home1.jpeg"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -60,7 +61,12 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div style={{  
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundImage: `url(${img})`,
+    }}>
+      <Header />
       <ToastContainer/>
       <Container
         maxWidth="lg"
@@ -69,9 +75,9 @@ const Home = () => {
           alignItems: "center",
           flexDirection: "column",
           height: "100vh",
+          width: "100%"
         }}
       > 
-        <Header />
         <Box sx={{ 
           '& > :not(style)': { m: 1 },
           float: 'left' 
@@ -86,7 +92,7 @@ const Home = () => {
           <GridVideo urls = {urls} />
         </Grid>
       </Container>
-    </>
+    </div>
   );
 };
 

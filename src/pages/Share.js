@@ -5,12 +5,15 @@ import styled from "@emotion/styled";
 import ShareForm from "../components/ShareForm";
 import { motion } from "framer-motion";
 import { ToastContainer } from 'react-toastify';
+import Header from "../components/Header.js"
+import img from "../BG-Home1.jpeg"
 
 const RootStyle = styled("div")({
   background: "rgb(249, 250, 251)",
   height: "100vh",
   display: "grid",
   placeItems: "center",
+  backgroundImage: `url(${img})`
 });
 
 const HeadingStyle = styled(Box)({
@@ -46,38 +49,44 @@ const fadeInUp = {
 
 const Share = () => {
   return (
-    <RootStyle>
-      <ToastContainer/>
+    <div style={{
+      display:"flex",
+      flexDirection:"column"
+    }}>
+      <Header />
+      <RootStyle>
+        <ToastContainer/>
+        <Container maxWidth="sm">
+          <ContentStyle>
+            <HeadingStyle component={motion.div} {...fadeInUp}>
+              <Typography sx={{ color: "text.secondary", mb: 5 }}>
+                SHARING VIDEO
+              </Typography>
+            </HeadingStyle>
 
-      <Container maxWidth="sm">
-        <ContentStyle>
-          <HeadingStyle component={motion.div} {...fadeInUp}>
-            <Typography sx={{ color: "text.secondary", mb: 5 }}>
-              SHARING VIDEO
+            <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
+            </Divider>
+
+            <HeadingStyle component={motion.div} {...fadeInUp}>
+            </HeadingStyle>
+
+            <ShareForm />
+            <Typography
+              component={motion.p}
+              {...fadeInUp}
+              variant="body2"
+              align="center"
+              sx={{ mt: 3 }}
+            >
+              <Link variant="subtitle2" component={RouterLink} to="/">
+                Back to Home Page
+              </Link>
             </Typography>
-          </HeadingStyle>
-
-          <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
-          </Divider>
-
-          <HeadingStyle component={motion.div} {...fadeInUp}>
-          </HeadingStyle>
-
-          <ShareForm />
-          <Typography
-            component={motion.p}
-            {...fadeInUp}
-            variant="body2"
-            align="center"
-            sx={{ mt: 3 }}
-          >
-            <Link variant="subtitle2" component={RouterLink} to="/">
-              Back to Home Page
-            </Link>
-          </Typography>
-        </ContentStyle>
-      </Container>
+          </ContentStyle>
+        </Container>
     </RootStyle>
+    </div>
+  
   );
 };
 

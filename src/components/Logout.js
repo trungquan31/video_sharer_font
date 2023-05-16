@@ -7,7 +7,6 @@ function Logout(){
     <Box sx={{ '& button': { m: 1 } }}>
       <Button size="small" variant="contained" onClick={() => {
         localStorage.removeItem('email')
-        localStorage.removeItem('access_token')
         window.location.reload(false);
       } }>
         Log out
